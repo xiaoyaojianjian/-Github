@@ -100,10 +100,10 @@ public class Run {
 ## 1.实例化bean的三种方式
 
 ```xml
-<!--构造方法实例化-->
+<!--1.构造方法实例化-->
 <bean id="IntelCpu" class="com.IntelCpu"></bean> 	
 
-<!-- 2.实例工厂实例化 -->
+<!--2.实例工厂实例化 -->
 <bean id="Desk" class="com.Desk" factory-method="createInstance" scope="prototype"></bean>
     
 <!--3.通过实例工厂生产bean，告诉Chair的工厂在哪，工厂的哪个方法  -->
@@ -1359,3 +1359,40 @@ spring-mvc,启用视图解析器
 
 
 
+# 简答
+
+IOC和DI的概念与关系
+
+![image-20210415082742242](F:\StudyFile\2020-2021SecondTerm\Spring.assets\image-20210415082742242.png)
+
+AOP编程：通知类型
+
+![image-20210415082958564](F:\StudyFile\2020-2021SecondTerm\Spring.assets\image-20210415082958564.png)
+
+BeanFatory与ApplicationContext区别
+
+| BeanFactoty                      |      | ApplicationContext |      |
+| -------------------------------- | ---- | ------------------ | ---- |
+| 功能：基本功能                   |      | 增加企业特定功能   |      |
+| 关系：接口                       |      | 子接口，超集       |      |
+| Bean载入方式：延迟加载,getBean() |      | 立即加载           |      |
+|                                  |      |                    |      |
+
+Bean的生命周期
+
+| **步 骤**                            | **说 明**                                                    |
+| ------------------------------------ | ------------------------------------------------------------ |
+| 1.实例化                             | Spring实例化Bean                                             |
+| 2.设置属性                           | Spring注入Bean的属性                                         |
+| 3.设置Bean名称，Bean工厂，应用上下文 | 如果Bean实现了XXXAware接口，执行对应方法                     |
+| 4.预处理(在初始化之前)               | 调用BeanPostProcessor对象的postProcessBeforeInitialization()方法 |
+| 5.初始化Bean                         | 实现InitializingBean接口的afterPropertiesSet()方法声明了初始化方法，将调用声明的 |
+| 6.预处理(在初始化之后)               | 调用BeanPostProcessor对象的postProcessAfterInitialization()方法 |
+| 7.Bean已经准备好                     | 默认以单例的形式存在Spring容器中                             |
+| 8.销毁Bean                           | 实现DisposableBean接口的destroy()方法声明了销毁方法，将调用声明的 |
+
+SpringMVC体系结构
+
+![image-20210415084846374](F:\StudyFile\2020-2021SecondTerm\Spring.assets\image-20210415084846374.png)
+
+![image-20210415084837389](F:\StudyFile\2020-2021SecondTerm\Spring.assets\image-20210415084837389.png)
